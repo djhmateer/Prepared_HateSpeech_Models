@@ -1,0 +1,17 @@
+tmp/
+.env*
+.DS_Store
+expmt/
+service_account.json
+__pycache__/
+._*
+anu.html
+*.log
+.pytest_cach
+
+anon*
+
+logs
+_all_train_results
+temp
+
