@@ -304,13 +304,14 @@ def main():
     while True:
         start = timeit.default_timer()
 
+        logger.info('Checking new csv files')
         for file in os.listdir('/home/dave/hatespeech/input'):
             if fnmatch.fnmatch(file, '*.csv'):
                 logger.info(f'Found {file=}')
+                sample = file
 
         time.sleep(1) #seconds
 
-        logger.info('XX3Checking for new file')
         duration='0'
 
         if len(sample)>3:
