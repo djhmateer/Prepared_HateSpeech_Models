@@ -295,8 +295,6 @@ def main():
     # delete input file at end of while loop
 
     while True:
-        logger.info('Checking new csv files')
-
         fileFound = False
 
         # webservice will write a file like 12345.csv
