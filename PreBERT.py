@@ -313,9 +313,9 @@ def main():
                 fileFound = True
             else:
                 logger.info('No csvs found, sleeping')
-                time.sleep(1) #seconds
+                time.sleep(5) #seconds
 
-        if fileFound:
+        if fileFound == True:
             duration='0'
 
             if len(sample)>3:
