@@ -305,7 +305,6 @@ def main():
         start = timeit.default_timer()
 
         logger.info('Checking new csv files')
-        time.sleep(5) #seconds
 
         fileFound = False
         for file in os.listdir('/home/dave/hatespeech/input'):
@@ -313,12 +312,11 @@ def main():
                 logger.info(f'Found {file=}')
                 sample = '/home/dave/hatespeech/input/' + file
                 fileFound = True
-            else:
-                logger.info('No csvs found, sleeping')
-                time.sleep(5) #seconds
 
-        logger.info('HERE')
-        if fileFound == True:
+        if fileFound == False:
+           logger.info('No csvs found, sleeping')
+           time.sleep(5) #seconds
+        else:
             duration='0'
 
             if len(sample)>3:
