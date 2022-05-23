@@ -496,10 +496,10 @@ def main():
                     html = df.to_html(justify='left')
                     #write html to file
         
-                    text_file = open(save_path_html, "w",encoding="utf-8")
-                    text_file.write(html)
-                    text_file.close()
-                    print('The prediction resuts are saved as html file in '+save_path_html)
+                    # text_file = open(save_path_html, "w",encoding="utf-8")
+                    # text_file.write(html)
+                    # text_file.close()
+                    # print('The prediction resuts are saved as html file in '+save_path_html)
         
       
             stop = timeit.default_timer()
