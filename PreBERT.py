@@ -506,6 +506,10 @@ def main():
         else:
     
             print('The running time in sec: ', round(runingtime, 3))
+
+        # delete the file as it has been processed now
+        os.remove(sample)
+
  
 
 
