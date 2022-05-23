@@ -462,44 +462,46 @@ def main():
                 Probability = model.predict(test_inputs)
                 Probability_preds=np.round(Probability, 5)*100
                 y_preds_sample =np.round(Probability)
-                if len(df) == 1 and format_file.lower() == '.txt':
+                # if len(df) == 1 and format_file.lower() == '.txt':
         
-                    if y_preds_sample[0][0] == 1:
-                        print('Input text in ('+sample+') contains hate')
-                    else:
-                        print('Input text in ('+sample+') does not contain hate')
-                else:
-                    df['Prediction']=y_preds_sample
-                    df['Hate score']=Probability_preds
-                    df.loc[(df.Prediction == 0),'Prediction']='does not contain hate'
-                    df.loc[(df.Prediction == 1),'Prediction']='contains hate'
-                    df['Text']=df['OrgnText']
-                    df=df[['Text','Prediction','Hate score']]
-                    #print(df)
-                    resultsfile=re.sub('[^A-Za-z-0-9]', '_', sample[0:len(sample)-4])
-        
-        
+                #     if y_preds_sample[0][0] == 1:
+                #         print('Input text in ('+sample+') contains hate')
+                #     else:
+                #         print('Input text in ('+sample+') does not contain hate')
+                # else:
 
-                    # if args.fn == 'None' or args.fn == '':
-                        #save_path='hate_prediction_'+resultsfile+'.csv'
-                    #     save_path='hate_prediction_results.csv'
-                    #     save_path_html='hate_prediction_results.html'
-                    # else:
-                    save_path=args.fn+'.csv'
-                    # save_path_html=args.fn+'.html'
-            
-                    df.to_csv(save_path)
-                    print('The prediction resuts are saved in '+save_path)
-                    #render dataframe as html
-                    # s = df.style.set_properties(**{'text-align': 'left'})
-                    # s.render()
-                    html = df.to_html(justify='left')
-                    #write html to file
+                df['Prediction']=y_preds_sample
+                df['Hate score']=Probability_preds
+                df.loc[(df.Prediction == 0),'Prediction']='does not contain hate'
+                df.loc[(df.Prediction == 1),'Prediction']='contains hate'
+                df['Text']=df['OrgnText']
+                df=df[['Text','Prediction','Hate score']]
+                #print(df)
+                # resultsfile=re.sub('[^A-Za-z-0-9]', '_', sample[0:len(sample)-4])
+    
+    
+
+                # if args.fn == 'None' or args.fn == '':
+                    #save_path='hate_prediction_'+resultsfile+'.csv'
+                #     save_path='hate_prediction_results.csv'
+                #     save_path_html='hate_prediction_results.html'
+                # else:
+                save_path=args.fn+'.csv'
+                # save_path_html=args.fn+'.html'
         
-                    # text_file = open(save_path_html, "w",encoding="utf-8")
-                    # text_file.write(html)
-                    # text_file.close()
-                    # print('The prediction resuts are saved as html file in '+save_path_html)
+                # df.to_csv(save_path)
+                df.to_csv(outputFile)
+                # print('The prediction resuts are saved in '+save_path)
+                #render dataframe as html
+                # s = df.style.set_properties(**{'text-align': 'left'})
+                # s.render()
+                # html = df.to_html(justify='left')
+                #write html to file
+    
+                # text_file = open(save_path_html, "w",encoding="utf-8")
+                # text_file.write(html)
+                # text_file.close()
+                # print('The prediction resuts are saved as html file in '+save_path_html)
         
       
             stop = timeit.default_timer()
