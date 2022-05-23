@@ -21,6 +21,9 @@ import argparse
 from loguru import logger
 import time
 
+import fnmatch
+import os
+
 logger.add("logs/2info.log", level="INFO")
 
 logger.info(f'Starting PreBERT')
@@ -268,7 +271,6 @@ def main():
     a_atn = tf.keras.layers.Input((MAX_SEQUENCE_LENGTH,), dtype=tf.int32)
 
     if MODEL_TYPE == 'roberta-base' or MODEL_TYPE == 'xlm-roberta-base':
-        print(f'***HERE') 
         q_embedding = TFBmodel(q_id, attention_mask=q_mask)[0]
         a_embedding = TFBmodel(a_id, attention_mask=a_mask)[0]
         q = tf.keras.layers.GlobalAveragePooling1D()(q_embedding)
@@ -301,6 +303,10 @@ def main():
 
     while True:
         start = timeit.default_timer()
+
+        for file in os.listdir('/home/dave/hatespeech/input'):
+            if fnmatch.fnmatch(file, '*.csv'):
+                logger.info(f'Found {file=}')
 
         time.sleep(1) #seconds
 
