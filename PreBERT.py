@@ -310,7 +310,7 @@ def main():
 
         time.sleep(1) #seconds
 
-        logger.info('XX2Checking for new file')
+        logger.info('XX3Checking for new file')
         duration='0'
 
         if len(sample)>3:
