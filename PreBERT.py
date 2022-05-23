@@ -498,15 +498,15 @@ def main():
                 # print('The prediction resuts are saved as html file in '+save_path_html)
         
       
-            stop = timeit.default_timer()
-            runingtime=stop - start
-            if runingtime>60:
-                mins= math.floor(runingtime/60)
-                secs= runingtime-(mins*60)
-                print('The running time:',mins,' min and ', round(secs, 3),'sec')
-            else:
+            # stop = timeit.default_timer()
+            # runingtime=stop - start
+            # if runingtime>60:
+            #     mins= math.floor(runingtime/60)
+            #     secs= runingtime-(mins*60)
+            #     print('The running time:',mins,' min and ', round(secs, 3),'sec')
+            # else:
     
-                print('The running time in sec: ', round(runingtime, 3))
+            #     print('The running time in sec: ', round(runingtime, 3))
 
             # delete the file as it has been processed now
             os.remove(sample)
