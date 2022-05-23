@@ -311,7 +311,7 @@ def main():
                 break # out of for loop
 
         if fileFound == False:
-           logger.info('No csvs found, sleeping')
+        #    logger.info('No csvs found, sleeping')
            time.sleep(0.2) #seconds
         else:
             # if len(sample)>3:
