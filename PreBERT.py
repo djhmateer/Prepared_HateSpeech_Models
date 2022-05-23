@@ -1,7 +1,5 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Jun 13 16:44:39 2021
-"""
+# For the HateSpeech API which osr4rightstools.org uses on the front page
+
 import numpy as np
 import pandas as pd
 import re
@@ -13,8 +11,6 @@ from transformers import BertConfig,TFBertModel,BertTokenizer
 from transformers import XLNetConfig,TFXLNetModel,XLNetTokenizer
 from transformers import RobertaConfig,TFRobertaModel,RobertaTokenizer
 from transformers import XLMRobertaConfig,TFXLMRobertaModel,XLMRobertaTokenizer
-
-#from SupportClasses import CleanData
 
 import math
 import argparse
@@ -307,10 +303,15 @@ def main():
         logger.info('Checking new csv files')
 
         fileFound = False
-        for file in os.listdir('/home/dave/hatespeech/input'):
+
+        # webservice will write a file like 12345.csv
+        inputPath = '/home/dave/hatespeech/input/'
+        outputPath = '/home/dave/hatespeech/ouput/'
+        for file in os.listdir(inputPath):
             if fnmatch.fnmatch(file, '*.csv'):
                 logger.info(f'Found {file=}')
-                sample = '/home/dave/hatespeech/input/' + file
+                sample = inputPath + file
+                outputFile = outputPath + file
                 fileFound = True
 
         if fileFound == False:
@@ -323,8 +324,6 @@ def main():
                 format_file=sample[len(sample)-4:len(sample)]
             else:
                 format_file='none'
-            ##################################
-
 
             #sample='input_text.txt'
             #MODEL_TYPE = 'xlnet-base-cased'
@@ -480,13 +479,14 @@ def main():
                     resultsfile=re.sub('[^A-Za-z-0-9]', '_', sample[0:len(sample)-4])
         
         
-                    if args.fn == 'None' or args.fn == '':
+
+                    # if args.fn == 'None' or args.fn == '':
                         #save_path='hate_prediction_'+resultsfile+'.csv'
-                        save_path='hate_prediction_results.csv'
-                        save_path_html='hate_prediction_results.html'
-                    else:
-                        save_path=args.fn+'.csv'
-                        save_path_html=args.fn+'.html'
+                    #     save_path='hate_prediction_results.csv'
+                    #     save_path_html='hate_prediction_results.html'
+                    # else:
+                    save_path=args.fn+'.csv'
+                    # save_path_html=args.fn+'.html'
             
                     df.to_csv(save_path)
                     print('The prediction resuts are saved in '+save_path)
@@ -514,9 +514,6 @@ def main():
 
             # delete the file as it has been processed now
             os.remove(sample)
-
- 
-
 
 if __name__ == '__main__':
     main()
