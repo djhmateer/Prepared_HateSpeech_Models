@@ -312,7 +312,7 @@ def main():
 
         if fileFound == False:
            logger.info('No csvs found, sleeping')
-           time.sleep(0.5) #seconds
+           time.sleep(0.2) #seconds
         else:
             # if len(sample)>3:
             #     format_file=sample[len(sample)-4:len(sample)]
