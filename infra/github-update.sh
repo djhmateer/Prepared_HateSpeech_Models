@@ -16,12 +16,12 @@ if [ $LOCAL != $REMOTE ]; then
     echo "pulled new code and merging"
     git pull origin master;
 
-    echo "stopping kestrel"
+    # echo "stopping kestrel"
     # sudo systemctl stop kestrel.service
 
-    sudo dotnet publish /home/dave/api-security-test/ --configuration Release --output /var/www
+    # sudo dotnet publish /home/dave/api-security-test/ --configuration Release --output /var/www
 
-    echo "starting kestrel"
+    # echo "starting kestrel"
     # sudo systemctl start kestrel.service
 fi
 sleep 5
