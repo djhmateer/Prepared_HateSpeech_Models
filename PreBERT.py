@@ -305,6 +305,8 @@ def main():
         start = timeit.default_timer()
 
         logger.info('Checking new csv files')
+        time.sleep(5) #seconds
+
         fileFound = False
         for file in os.listdir('/home/dave/hatespeech/input'):
             if fnmatch.fnmatch(file, '*.csv'):
@@ -315,6 +317,7 @@ def main():
                 logger.info('No csvs found, sleeping')
                 time.sleep(5) #seconds
 
+        logger.info('HERE')
         if fileFound == True:
             duration='0'
 
