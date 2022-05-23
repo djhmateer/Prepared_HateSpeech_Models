@@ -308,7 +308,7 @@ def main():
         for file in os.listdir('/home/dave/hatespeech/input'):
             if fnmatch.fnmatch(file, '*.csv'):
                 logger.info(f'Found {file=}')
-                sample = '/home/dave/hatespeech/input' + file
+                sample = '/home/dave/hatespeech/input/' + file
 
         time.sleep(1) #seconds
 
