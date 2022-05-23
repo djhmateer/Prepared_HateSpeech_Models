@@ -289,17 +289,12 @@ def main():
     logger.info(MODEL_TYPE+' Model Loaded')
 
 
-
-    import timeit
-
     # infinite while loop
     # check every 0.5 second for temp/input.csv
     # process it and delivery output if yes
     # delete input file at end of while loop
 
     while True:
-        start = timeit.default_timer()
-
         logger.info('Checking new csv files')
 
         fileFound = False
@@ -318,31 +313,29 @@ def main():
            logger.info('No csvs found, sleeping')
            time.sleep(5) #seconds
         else:
-            duration='0'
-
-            if len(sample)>3:
-                format_file=sample[len(sample)-4:len(sample)]
-            else:
-                format_file='none'
+            # if len(sample)>3:
+            #     format_file=sample[len(sample)-4:len(sample)]
+            # else:
+            #     format_file='none'
 
             #sample='input_text.txt'
             #MODEL_TYPE = 'xlnet-base-cased'
             format_file=sample[len(sample)-4:len(sample)]
-            if format_file.lower() == '.txt':
-                input_file = open('input_text.txt', 'r')
-                lines = input_file.readlines()
-                input_file.close()
-                sample = ''
-                for line in lines:
-                    sample = sample + line.strip()
-                print('INPUT TEXT: ' + sample)
-                df = pd.DataFrame(data={'Text':[sample]})
-            elif format_file.lower() == '.tsv':
-                df = pd.read_csv(sample, sep='\t',engine='python')
-            elif format_file.lower() == '.csv':
-                df = pd.read_csv(sample,engine='python')
-            else:
-                df = pd.DataFrame(data={'Text':[sample]})
+            # if format_file.lower() == '.txt':
+            #     input_file = open('input_text.txt', 'r')
+            #     lines = input_file.readlines()
+            #     input_file.close()
+            #     sample = ''
+            #     for line in lines:
+            #         sample = sample + line.strip()
+            #     print('INPUT TEXT: ' + sample)
+            #     df = pd.DataFrame(data={'Text':[sample]})
+            # elif format_file.lower() == '.tsv':
+            #     df = pd.read_csv(sample, sep='\t',engine='python')
+            # elif format_file.lower() == '.csv':
+            df = pd.read_csv(sample,engine='python')
+            # else:
+            #     df = pd.DataFrame(data={'Text':[sample]})
     
 
             df=df.rename(columns = {'task_1':'label'})
