@@ -306,7 +306,7 @@ def main():
 
         # webservice will write a file like 12345.csv
         inputPath = '/home/dave/hatespeech/input/'
-        outputPath = '/home/dave/hatespeech/ouput/'
+        outputPath = '/home/dave/hatespeech/output/'
         for file in os.listdir(inputPath):
             if fnmatch.fnmatch(file, '*.csv'):
                 logger.info(f'Found {file=}')
@@ -490,6 +490,7 @@ def main():
                 # save_path_html=args.fn+'.html'
         
                 # df.to_csv(save_path)
+                logger.info(f'Saving to {outputFile=}')
                 df.to_csv(outputFile)
                 # print('The prediction resuts are saved in '+save_path)
                 #render dataframe as html
